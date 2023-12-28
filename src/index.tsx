@@ -79,6 +79,7 @@ const app = new Elysia()
         content: t.String()
       })
     })
+  .get('/styles.css', () => Bun.file('./tailwind-gen/styles.css'))
   .listen(3000);
 
 console.log(`Elysia is running at http://${app.server?.hostname}:${app.server?.port}`);
@@ -91,8 +92,8 @@ const BaseHtml = ({ children }: elements.Children) => `
   <meta name="viewport" content="width=device-with, initial-scale=1.0">
   <title>THE BETH STACK</title>
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+  <link href="/styles.css" rel="stylesheet">
 </head>
 
 ${children}
