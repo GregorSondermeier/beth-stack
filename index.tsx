@@ -6,14 +6,12 @@ const app = new Elysia()
   .use(html())
   .get('/', ({ html }) => html(
     <BaseHtml>
-      <body class="flex w-full h-screen justify-center items-center">
-        <button
-          hx-post="/clicked"
-          hx-swap="outerHTML"
-        >
-          Click Me
-        </button>
-      </body>
+      <body
+        class="flex w-full h-screen justify-center items-center"
+        hx-get="/todos"
+        hx-trigger="load"
+        hx-swap="innerHTML"
+      />
     </BaseHtml>)
   )
   .post('/clicked', () => <div class="text-blue-600">I'm from the server!</div>)
@@ -54,7 +52,7 @@ function TodoItem({ id, content, completed }: Todo) {
     <div class="flex flex-row space-x-3">
       <p>{content}</p>
       <input type="checkbox" checked={completed} />
-      <button className="text-red-500">X</button>
+      <button class="text-red-500">X</button>
     </div>
   );
 }
