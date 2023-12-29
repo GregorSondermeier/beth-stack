@@ -7,6 +7,9 @@
     "jsx": "react",
     "jsxFactory": "elements.createElement",
     "allowJs": true,
+    "types": [
+      "bun-types" // add Bun global
+    ],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
